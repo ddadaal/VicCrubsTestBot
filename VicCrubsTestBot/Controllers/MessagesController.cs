@@ -3,10 +3,16 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
+using System.Linq;
 using Microsoft.Bot.Connector;
+using Microsoft.Bot.Builder.Luis;
+using System;
+using Microsoft.Bot.Builder.Luis.Models;
 
 namespace VicCrubsTestBot
 {
+
+
     [BotAuthentication]
     public class MessagesController : ApiController
     {
@@ -18,7 +24,7 @@ namespace VicCrubsTestBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                await Conversation.SendAsync(activity, () => new Dialogs.TestDialog());
             }
             else
             {
